@@ -1,16 +1,16 @@
 import { ActionTypes } from '../types';
 
-export interface Location {
+export interface LocationInterface {
   name?:string;
-  latitude:string;
-  longitude:string;
+  latitude:number;
+  longitude:number;
 }
 // Set current location
 export interface SetLocationInterface {
   type:ActionTypes.SET_LOCATION;
   payload: Location;
 }
-export const setLocation = (location:Location) => ({
+export const setLocation = (location:LocationInterface) => ({
   type: ActionTypes.SET_LOCATION,
   payload: location
 })

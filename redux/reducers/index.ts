@@ -2,10 +2,10 @@ import { combineReducers } from 'redux';
 import {
   currentLocation,
 } from './locationReducers';
-import { Location } from '../actions';
+import { LocationInterface } from '../actions';
 
 export interface StoreState {
-  currentLocation: Location;
+  currentLocation: LocationInterface;
 }
 
 export const reducers = combineReducers<StoreState>({
