@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, ScrollView } from 'react-native';
 import { Location, Permissions } from 'expo';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
@@ -7,6 +7,7 @@ import { StoreState } from '../../redux/reducers';
 import { setLocation, LocationInterface } from '../../redux/actions';
 import { Header } from '../header/Header';
 import { Search } from '../search/Search';
+import { Graph } from '../graph/Graph';
 
 interface HomeProps {
   setLocation:Function;
@@ -35,10 +36,11 @@ export class HomeComponent extends React.Component<HomeProps> {
 
   render() {
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <Header />
         <Search />
-      </View>
+        <Graph />
+      </ScrollView>
     );
   }
 }
@@ -55,7 +57,6 @@ const mapActionsToProps = (dispatch:Dispatch) => ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
     backgroundColor: '#fff',
   },
 });
