@@ -1,9 +1,17 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
 import { SubButton } from '../common';
 import { SearchContainer, SearchTypeButtons } from './searchStyles';
 import { Coords } from './Coords';
+import { setForecast, WeatherInterface } from '../../redux/actions';
 
-export class Search extends React.Component {
+
+interface SearchProps {
+  setForecast:Function;
+}
+
+export class SearchComponent extends React.Component<SearchProps> {
   state = {
     searchingBy: 'COORDS' // COORDS, CITY, ZIP
   }
@@ -15,7 +23,7 @@ export class Search extends React.Component {
   renderSearchInput() {
     switch (this.state.searchingBy) {
       case 'COORDS':
-        return <Coords />;
+        return <Coords setForecast={(forecast:WeatherInterface[]) => this.props.setForecast(forecast)}/>;
       default:
         return null;
     }
@@ -46,3 +54,11 @@ export class Search extends React.Component {
     );
   }
 }
+
+const mapActionsToProps = (dispatch:Dispatch) => ({
+  setForecast(forecast:WeatherInterface[]) {
+    return dispatch(setForecast(forecast));
+  },
+});
+
+export const Search = connect(null, mapActionsToProps)(SearchComponent);
