@@ -23,12 +23,12 @@ export class Coords extends React.Component {
       <>
         <Input
           header="Latitude"
-          placeholder="-"
+          placeholder=" -"
           onChangeText={(text) => this.setState({ latInput: text })}
         />
         <Input
           header="Longitude"
-          placeholder="-"
+          placeholder=" -"
           onChangeText={(text) => this.setState({ longInput: text })}
         />
         <MainButton
