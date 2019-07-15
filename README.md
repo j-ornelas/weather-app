@@ -3,7 +3,7 @@
 Created in Typescript / React Native.
 
 
-####Running app:
+#### Running app:
 
 The app was created using Expo for demo simplicity
 
