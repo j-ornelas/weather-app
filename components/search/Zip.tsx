@@ -5,14 +5,13 @@ import { WEATHER_KEY } from '../../private';
 interface CoordsProps {
   setForecast:Function;
 }
-export class Coords extends React.Component<CoordsProps> {
+export class Zip extends React.Component<CoordsProps> {
   state = {
-    latInput: '',
-    longInput: '',
+    zipInput: '',
   }
 
   handleSearch() {
-    const request = `https://api.openweathermap.org/data/2.5/forecast?lat=${this.state.latInput}&lon=${this.state.longInput}&APPID=${WEATHER_KEY}&units=imperial`;
+    const request = `https://api.openweathermap.org/data/2.5/forecast?q=${this.state.zipInput},us&APPID=${WEATHER_KEY}&units=imperial&mode=json`;
     fetch(request)
       .then(res => res.json())
       .then(info => {
@@ -25,14 +24,9 @@ export class Coords extends React.Component<CoordsProps> {
     return (
       <>
         <Input
-          header="Latitude"
+          header="Zip"
           placeholder=" -"
-          onChangeText={(text) => this.setState({ latInput: text })}
-        />
-        <Input
-          header="Longitude"
-          placeholder=" -"
-          onChangeText={(text) => this.setState({ longInput: text })}
+          onChangeText={(text) => this.setState({ zipInput: text })}
         />
         <MainButton
           text="Let's go!"
