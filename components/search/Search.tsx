@@ -17,7 +17,6 @@ export class SearchComponent extends React.Component<SearchProps> {
   }
 
   handleSearch() {
-    console.log('searching!');
   }
 
   renderSearchInput() {
