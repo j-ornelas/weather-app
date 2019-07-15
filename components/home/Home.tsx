@@ -1,10 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { Location, Permissions } from 'expo';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { StoreState } from '../../redux/reducers';
 import { setLocation, LocationInterface } from '../../redux/actions';
+import { Header } from '../header/Header';
+import { Search } from '../search/Search';
 
 interface HomeProps {
   setLocation:Function;
@@ -34,7 +36,8 @@ export class HomeComponent extends React.Component<HomeProps> {
   render() {
     return (
       <View style={styles.container}>
-        <Text>your location is {this.props.currentLocation.latitude}, {this.props.currentLocation.longitude}</Text>
+        <Header />
+        <Search />
       </View>
     );
   }
@@ -52,9 +55,8 @@ const mapActionsToProps = (dispatch:Dispatch) => ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#fff',
   },
 });
 
